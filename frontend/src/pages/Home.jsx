@@ -145,7 +145,7 @@ const Home = () => {
               </button>
               {product.image ? (
                 <img 
-                  src={product.image.startsWith('http') ? product.image : `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${product.image}`} 
+                  src={product.image.startsWith('http') ? product.image : `${(import.meta.env.VITE_API_URL || 'http://localhost:5000').replace(/\/+$/, '').replace(/\/api$/, '')}${product.image}`} 
                   alt={product.name} 
                   className="w-full h-full object-contain mix-blend-multiply" 
                   onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block'; }}

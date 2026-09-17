@@ -21,7 +21,7 @@ const Cart = () => {
                 <div className="h-24 w-24 bg-gray-100 flex items-center justify-center rounded overflow-hidden">
                   {item.productId?.image ? (
                     <img 
-                      src={item.productId.image.startsWith('http') ? item.productId.image : `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${item.productId.image}`} 
+                      src={item.productId.image.startsWith('http') ? item.productId.image : `${(import.meta.env.VITE_API_URL || 'http://localhost:5000').replace(/\/+$/, '').replace(/\/api$/, '')}${item.productId.image}`} 
                       alt={item.productId.name} 
                       className="w-full h-full object-cover" 
                       onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block'; }}

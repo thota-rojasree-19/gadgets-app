@@ -53,7 +53,7 @@ const AdminProducts = () => {
       description: product.description, price: product.price, mrp: product.mrp, stock: product.stock
     });
     setFile(null);
-    setPreview(product.image ? (product.image.startsWith('http') ? product.image : `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${product.image}`) : null);
+    setPreview(product.image ? (product.image.startsWith('http') ? product.image : `${(import.meta.env.VITE_API_URL || 'http://localhost:5000').replace(/\/+$/, '').replace(/\/api$/, '')}${product.image}`) : null);
     setShowForm(true);
   };
 
@@ -160,7 +160,7 @@ const AdminProducts = () => {
                 <td className="px-6 py-4">
                   {product.image ? (
                     <img 
-                      src={product.image.startsWith('http') ? product.image : `${import.meta.env.VITE_API_URL || 'http://localhost:5000'}${product.image}`} 
+                      src={product.image.startsWith('http') ? product.image : `${(import.meta.env.VITE_API_URL || 'http://localhost:5000').replace(/\/+$/, '').replace(/\/api$/, '')}${product.image}`} 
                       alt={product.name} 
                       className="h-10 w-10 object-cover rounded" 
                       onError={(e) => { e.target.style.display = 'none'; e.target.nextSibling.style.display = 'block'; }}
